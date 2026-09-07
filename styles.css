@@ -1,0 +1,68 @@
+/* 顶部沉浸式极简渐变光感进度条 */
+#ras-top-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #2563eb, #38bdf8, #818cf8);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.7), 0 0 4px rgba(37, 99, 235, 0.8);
+  z-index: 2147483647;
+  pointer-events: none;
+  transition: width 0.12s ease-out;
+}
+
+#reader-auto-scroll-panel {
+  position: fixed; z-index: 2147483647; right: 18px; bottom: 18px;
+  display: flex; align-items: center; gap: 7px; padding: 8px 12px;
+  color: #f4f4f5; background: rgba(24, 24, 27, .94); border: 1px solid #52525b;
+  border-radius: 9px; box-shadow: 0 4px 20px rgba(0,0,0,.35);
+  font: 13px/1.2 system-ui, sans-serif;
+  user-select: none;
+}
+#reader-auto-scroll-panel button { border: 0; border-radius: 5px; padding: 5px 9px; color: #fff; background: #3f3f46; cursor: pointer; user-select: none; }
+#reader-auto-scroll-panel button:hover { background: #52525b; }
+#reader-auto-scroll-panel #ras-toggle { background: #2563eb; min-width: 72px; font-weight: 500; }
+#reader-auto-scroll-panel.ras-running #ras-toggle { background: #b45309; }
+#reader-auto-scroll-panel.ras-hidden { display: none; }
+#reader-auto-scroll-panel.ras-collapsed { width: 28px; height: 28px; padding: 0; overflow: hidden; }
+#reader-auto-scroll-panel.ras-collapsed > *:not(#ras-close) { display: none; }
+#reader-auto-scroll-panel.ras-collapsed #ras-close { display: block; width: 100%; height: 100%; }
+#reader-auto-scroll-panel:hover { opacity: 1; }
+#reader-auto-scroll-panel { opacity: .85; transition: opacity .2s ease; }
+.ras-chapter-divider { margin: 3em 10%; border: 0; border-top: 2px solid #aaa; }
+#ras-next-tip { position: fixed; z-index: 2147483647; left: 50%; bottom: 18px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; display: flex; gap: 10px; align-items: center; padding: 9px 12px; color: #fff; background: rgba(24,24,27,.94); border: 1px solid #52525b; border-radius: 7px; font: 13px system-ui,sans-serif; transition: .2s ease; user-select: none; }
+#ras-next-tip.ras-visible { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
+#ras-next-tip button { border: 0; border-radius: 4px; padding: 5px 8px; color: #fff; background: #2563eb; cursor: pointer; }
+#reader-auto-scroll-panel input { width: 80px; vertical-align: middle; accent-color: #60a5fa; }
+#reader-auto-scroll-panel #ras-value { min-width: 52px; text-align: center; color: #d4d4d8; font-size: 12px; }
+
+/* 控制条内嵌精美进度胶囊 */
+#reader-auto-scroll-panel #ras-progress-pill {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  min-width: 48px; height: 22px; padding: 0 8px;
+  background: rgba(34, 34, 38, 0.95); border: 1px solid rgba(82, 82, 91, 0.85);
+  border-radius: 11px; overflow: hidden; user-select: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+#reader-auto-scroll-panel #ras-progress-fill {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 0%;
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.5), rgba(56, 189, 248, 0.5));
+  border-radius: 11px;
+  transition: width 0.15s ease-out;
+}
+#reader-auto-scroll-panel #ras-progress-text {
+  position: relative; z-index: 1; font: 600 11px/1 system-ui, -apple-system, sans-serif;
+  color: #38bdf8; letter-spacing: 0.3px;
+}
+
+#reader-auto-scroll-panel #ras-next:disabled { opacity: .4; cursor: default; }
+#reader-auto-scroll-panel #ras-close { padding: 3px 7px; font-size: 16px; background: transparent; }
+@media (max-width: 600px) { #reader-auto-scroll-panel { right: 8px; bottom: 8px; gap: 4px; padding: 7px; } #reader-auto-scroll-panel input { width: 65px; } }
+
+/* 恢复和图书等小说站正文容器的原生滚动与中键漫游能力 */
+#cbox, #content {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  touch-action: auto !important;
+}

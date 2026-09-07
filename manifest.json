@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "阅读助手：自动下翻",
+  "version": "1.0.0",
+  "description": "在小说阅读页一键自动滚动，支持快捷键和速度调节。",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "阅读助手"
+  }
+}
